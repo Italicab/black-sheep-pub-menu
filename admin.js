@@ -1,4 +1,4 @@
-const ADMIN_PASSWORD = "BlackSheep2026";
+const ADMIN_PASSWORD = "Black2026";
 const enteredPassword = prompt("Inserisci password amministratore");
 if(enteredPassword !== ADMIN_PASSWORD){
   document.body.innerHTML = "<h1 style='color:white;text-align:center;margin-top:100px'>Accesso negato</h1>";
