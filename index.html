@@ -1,25 +1,11 @@
 <!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Black Sheep Pub Brescia</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body><nav class="nav"><div class="brand"><img src="assets/logo.jpg"><span>The Black Sheep Pub</span></div><div class="lang"><button id="itBtn" onclick="setLang('it')">Italiano</button><button id="enBtn" onclick="setLang('en')">English</button><a class="btn" href="admin.html">Admin</a></div></nav><header class="hero"><div class="wrap"><div class="eyebrow">Brescia • Pub & Restaurant</div><h1>The Black Sheep Pub</h1><p class="lead" data-i18n="hero"></p><div class="actions"><a class="btn primary" href="#daily" data-i18n="today"></a><a class="btn" href="#menu" data-i18n="viewMenu"></a><a class="btn" id="callBtn" href="#" data-i18n="book"></a></div></div></header><section class="intro-story">
   <div class="wrap story-box">
 
-    <h2 id="storyTitle">Benvenuti al Black Sheep Pub</h2>
+    <h2 id="storyTitle"></h2>
 
-    <p id="storyText">
-      Benvenuti nel nostro pub ristorante, un luogo dove buon cibo,
-      ottime birre e atmosfera conviviale si incontrano ogni giorno.
-      <br><br>
-      Abbiamo creato uno spazio accogliente pensato per chi ama stare bene:
-      dalla cena tra amici all’aperitivo serale, fino al dopocena con cocktails,
-      gin tonic selezionati e distillati di qualità.
-      <br><br>
-      La nostra cucina propone piatti gustosi preparati con ingredienti scelti,
-      accompagnati da una selezione di birre, cocktails classici e specialità della casa.
-      <br><br>
-      Ogni giorno troverai anche il nostro Menu del Giorno,
-      con proposte sempre nuove pensate per sorprenderti e farti sentire a casa.
-      <br><br>
-      Ti aspettiamo per condividere buon gusto, relax e belle serate.
-   </p>
-</div>
+    <p id="storyText"></p>
+
+  </div>
 </section>
 
 <section id="daily" class="daily"><div class="wrap"><div class="box"><span class="badge" data-i18n="firstView"></span><h2 id="dailyTitle"></h2><p class="lead" id="dailySubtitle"></p><div class="menu-grid" id="dailyItems"></div></div></div></section><section><div class="wrap"><div class="eyebrow">Black Sheep Experience</div><h2 data-i18n="introTitle"></h2><p class="lead" data-i18n="introText"></p><div class="cards"><article class="photo"><img src="assets/burger.jpg"><div><h3>Burger</h3><p data-i18n="burgerText"></p></div></article><article class="photo"><img src="assets/hero-beer.jpg"><div><h3 data-i18n="beerTitle"></h3><p data-i18n="beerText"></p></div></article><article class="photo"><img src="assets/gin.jpg"><div><h3>Gin Tonic</h3><p data-i18n="ginText"></p></div></article></div></div></section><section id="menu"><div class="wrap"><div class="eyebrow" data-i18n="digitalMenu"></div><h2 data-i18n="chooseCat"></h2><div class="tabs" id="tabs"></div><div id="menuContent"></div></div></section><section class="contact"><div class="wrap"><h2 data-i18n="contacts"></h2><p class="lead"><span data-i18n="phoneLabel"></span>: <strong id="phoneText"></strong></p><div class="actions"><a class="btn primary" id="phoneLink" href="#" data-i18n="callNow"></a><a class="btn" id="whatsappLink" href="#">WhatsApp</a></div><p class="small" id="addressText"></p></div></section><footer class="footer">The Black Sheep Pub • Brescia • QR Menu</footer><script src="data.js"></script><script src="app.js"></script></body></html>
