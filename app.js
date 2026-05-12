@@ -2,7 +2,7 @@ const KEY="blackSheepMenuData_v1";let data=JSON.parse(localStorage.getItem(KEY)|
 
 const tr={
 it:{
-hero:"Atmosfera calda, cucina di carattere, birre selezionate, cocktails e gin tonic preparati con cura.",
+hero:"Sapori autentici, birre selezionate e cocktails pensati per le tue serate.",
 today:"Menu del giorno",
 viewMenu:"Guarda il menu",
 book:"Prenota ora",
@@ -22,7 +22,7 @@ phoneLabel:"Telefono / WhatsApp",
 callNow:"Chiama ora"
 },
 en:{
-hero:"Carefully prepared dishes, quality ingredients and an atmosphere to enjoy.",
+hero:"Authentic flavors, selected beers and cocktails crafted for your evenings.",
 today:"Daily menu",
 viewMenu:"View menu",
 book:"Book now",
