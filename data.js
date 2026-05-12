@@ -1,6 +1,6 @@
 window.DEFAULT_MENU_DATA = {
   "settings": {
-    "showDaily": true,
+  "showDaily": false,
     "phone": "030 290 55 53",
     "whatsapp": "030 290 55 53",
     "address": "Via Tosio, 15a - Brescia",
