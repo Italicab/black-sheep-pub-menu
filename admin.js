@@ -1,3 +1,9 @@
+const ADMIN_PASSWORD = "BlackSheep2026";
+const enteredPassword = prompt("Inserisci password amministratore");
+if(enteredPassword !== ADMIN_PASSWORD){
+  document.body.innerHTML = "<h1 style='color:white;text-align:center;margin-top:100px'>Accesso negato</h1>";
+  throw new Error("Access denied");
+}
 const KEY="blackSheepMenuData_v1";let data=JSON.parse(localStorage.getItem(KEY)||"null")||structuredClone(window.DEFAULT_MENU_DATA);const esc=s=>String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");const f=(l,p,v)=>`<label>${l}</label><input data-path="${p}" value="${esc(v)}">`;const a=(l,p,v)=>`<label>${l}</label><textarea data-path="${p}">${esc(v)}</textarea>`;function render(){root.innerHTML=`<div class=admin-card><h2>Contatti</h2><label>Mostra Menu del Giorno</label>
 <select data-path="settings.showDaily">
   <option value="true" ${data.settings.showDaily !== false ? "selected" : ""}>Sì, mostra</option>
