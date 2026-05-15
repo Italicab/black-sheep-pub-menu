@@ -15,21 +15,26 @@ const btn = document.getElementById("dailyToggleBtn");
 if(btn){
   btn.textContent = data.settings.showDaily === false ? "⭐ Menu giorno OFF" : "⭐ Menu giorno ON";
   btn.className = data.settings.showDaily === false ? "top-btn off" : "top-btn gold";
-}}function setPath(o,p,v){let ps=p.split('.'),c=o;for(let i=0;i<ps.length-1;i++)c=c[ps[i]];if(v==="true")v=true;if(v==="false")v=false;c[ps.at(-1)]=v;if(p.includes('daily.it.items.')&&p.endsWith('.price')){let i=+p.split('.')[3];if(data.daily.en.items[i])data.daily.en.items[i].price=v}}function collect(){document.querySelectorAll('[data-path]').forEach(el=>setPath(data,el.dataset.path,el.value))}async function save(){
+}}function setPath(o,p,v){let ps=p.split('.'),c=o;for(let i=0;i<ps.length-1;i++)c=c[ps[i]];if(v==="true")v=true;if(v==="false")v=false;c[ps.at(-1)]=v;if(p.includes('daily.it.items.')&&p.endsWith('.price')){let i=+p.split('.')[3];if(data.daily.en.items[i])data.daily.en.items[i].price=v}}function collect(){document.querySelectorAll('[data-path]').forEach(el=>setPath(data,el.dataset.path,el.value))}
+async function save(){
 
   collect();
 
-  localStorage.setItem(KEY, JSON.stringify(data));
-
-  await supabaseClient
+  const { error } = await supabaseClient
     .from("menu_data")
-    .update({
+    .upsert({
+      id:"black_sheep_menu",
       data:data
-    })
-    .eq("id","black_sheep_menu");
+    });
 
-  alert("Modifiche salvate online");
-}function addDaily(){collect();data.daily.it.items.push({name:'Nuova voce',desc:'',price:''});data.daily.en.items.push({name:'New item',desc:'',price:''});render()}function removeDaily(i){collect();data.daily.it.items.splice(i,1);data.daily.en.items.splice(i,1);render()}function addCat(){collect();data.categories.push({id:'cat'+Date.now(),it:'Nuova categoria',en:'New category',items:[]});render()}function addItem(ci){collect();data.categories[ci].items.push({it:'Nuova voce',en:'New item',desc_it:'',desc_en:'',price:''});render()}function removeItem(ci,ii){collect();data.categories[ci].items.splice(ii,1);render()}
+  if(error){
+    alert("Errore salvataggio online: " + error.message);
+    return;
+  }
+
+  alert("Modifiche salvate online correttamente");
+}
+function addDaily(){collect();data.daily.it.items.push({name:'Nuova voce',desc:'',price:''});data.daily.en.items.push({name:'New item',desc:'',price:''});render()}function removeDaily(i){collect();data.daily.it.items.splice(i,1);data.daily.en.items.splice(i,1);render()}function addCat(){collect();data.categories.push({id:'cat'+Date.now(),it:'Nuova categoria',en:'New category',items:[]});render()}function addItem(ci){collect();data.categories[ci].items.push({it:'Nuova voce',en:'New item',desc_it:'',desc_en:'',price:''});render()}function removeItem(ci,ii){collect();data.categories[ci].items.splice(ii,1);render()}
 
 function toggleDaily(){
   collect();
