@@ -3,3 +3,18 @@
   color:#fff;
   border:1px solid #777;
 }
+.top-actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.top-btn{
+  padding:14px 22px;
+  font-size:15px;
+  font-weight:800;
+}
+
+.top-btn.gold{
+  transform:scale(1.08);
+}
