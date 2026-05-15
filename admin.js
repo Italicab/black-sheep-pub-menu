@@ -4,6 +4,14 @@ if(enteredPassword !== ADMIN_PASSWORD){
   document.body.innerHTML = "<h1 style='color:white;text-align:center;margin-top:100px'>Accesso negato</h1>";
   throw new Error("Access denied");
 }
+const SUPABASE_URL = "https://mnjtgnwaovrhlypyxmln.supabase.co";
+
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1uanRnbndhb3ZyaGx5cHl4bWxuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4NDY3NzIsImV4cCI6MjA5NDQyMjc3Mn0._OJXtrZW96pEYpCFBgUq3uxOiKhPFM9ZcBITGITLuXE";
+
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 const KEY="blackSheepMenuData_v1";let data=JSON.parse(localStorage.getItem(KEY)||"null")||structuredClone(window.DEFAULT_MENU_DATA);const esc=s=>String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");const f=(l,p,v)=>`<label>${l}</label><input data-path="${p}" value="${esc(v)}">`;const a=(l,p,v)=>`<label>${l}</label><textarea data-path="${p}">${esc(v)}</textarea>`;function render(){root.innerHTML=`<div class=admin-card><h2>Contatti</h2>
 <div class=row><div>${f('Telefono prenotazioni','settings.phone',data.settings.phone)}</div><div>${f('WhatsApp','settings.whatsapp',data.settings.whatsapp)}</div><div>${f('Indirizzo','settings.address',data.settings.address)}</div></div><p class=small>Nessuna email, come richiesto.</p></div><div class=admin-card><h2>Menu del giorno in evidenza</h2>${data.daily.it.items.map((it,i)=>`<div class=admin-card><h3>Riga ${i+1}</h3><div class=row><div>${f('Nome IT',`daily.it.items.${i}.name`,it.name)}</div><div>${f('Nome EN',`daily.en.items.${i}.name`,data.daily.en.items[i]?.name||'')}</div><div>${f('Prezzo',`daily.it.items.${i}.price`,it.price)}</div></div><div class=row><div>${a('Descrizione IT',`daily.it.items.${i}.desc`,it.desc)}</div><div>${a('Descrizione EN',`daily.en.items.${i}.desc`,data.daily.en.items[i]?.desc||'')}</div><div><button onclick="removeDaily(${i})">Elimina</button></div></div></div>`).join('')}</div><div class=admin-card><h2>Menu completo</h2>${data.categories.map((c,ci)=>`<div class=admin-card><div class=row><div>${f('Categoria IT',`categories.${ci}.it`,c.it)}</div><div>${f('Categoria EN',`categories.${ci}.en`,c.en)}</div><div><button onclick="addItem(${ci})">+ Voce</button></div></div>${c.items.map((item,ii)=>`<div class=admin-card><div class=row><div>${f('Nome IT',`categories.${ci}.items.${ii}.it`,item.it)}</div><div>${f('Nome EN',`categories.${ci}.items.${ii}.en`,item.en)}</div><div>${f('Prezzo',`categories.${ci}.items.${ii}.price`,item.price)}</div></div><div class=row><div>${a('Descrizione IT',`categories.${ci}.items.${ii}.desc_it`,item.desc_it)}</div><div>${a('Descrizione EN',`categories.${ci}.items.${ii}.desc_en`,item.desc_en)}</div><div><button onclick="removeItem(${ci},${ii})">Elimina</button></div></div></div>`).join('')}</div>`).join('')}</div>`;
 document.querySelectorAll('[data-path]').forEach(el=>{
