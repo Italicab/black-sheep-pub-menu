@@ -7,7 +7,11 @@ const supabaseClient = supabase.createClient(
   SUPABASE_KEY
 );
 
-const KEY="blackSheepMenuData_v1";let data = structuredClone(window.DEFAULT_MENU_DATA);let lang=localStorage.getItem("blackSheepLang")||"it";let activeCat=data.categories[0].id;
+const KEY="blackSheepMenuData_v1";
+localStorage.removeItem(KEY);
+let data = structuredClone(window.DEFAULT_MENU_DATA);
+let lang=localStorage.getItem("blackSheepLang")||"it";
+let activeCat=data.categories[0].id;
 
 const tr={
 it:{
