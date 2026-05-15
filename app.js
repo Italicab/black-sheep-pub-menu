@@ -1,4 +1,13 @@
-const KEY="blackSheepMenuData_v1";let data=JSON.parse(localStorage.getItem(KEY)||"null")||window.DEFAULT_MENU_DATA;let lang=localStorage.getItem("blackSheepLang")||"it";let activeCat=data.categories[0].id;
+const SUPABASE_URL = "https://mnjtgnwaovrhlypyxmln.supabase.co";
+
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1uanRnbndhb3ZyaGx5cHl4bWxuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg4NDY3NzIsImV4cCI6MjA5NDQyMjc3Mn0._OJXtrZW96pEYpCFBgUq3uxOiKhPFM9ZcBITGITLuXE";
+
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+const KEY="blackSheepMenuData_v1";let data = structuredClone(window.DEFAULT_MENU_DATA);let lang=localStorage.getItem("blackSheepLang")||"it";let activeCat=data.categories[0].id;
 
 const tr={
 it:{
@@ -92,3 +101,18 @@ function render(){
 }
 
 render();
+async function loadMenuFromCloud(){
+
+  const { data: cloudData } = await supabaseClient
+    .from("menu_data")
+    .select("*")
+    .eq("id","black_sheep_menu")
+    .single();
+
+  if(cloudData && cloudData.data){
+    data = cloudData.data;
+    render();
+  }
+}
+
+loadMenuFromCloud();
