@@ -31,7 +31,7 @@ async function save(){
     alert("Errore salvataggio online: " + error.message);
     return;
   }
-
+console.log(error);
   alert("Modifiche salvate online correttamente");
 }
 function addDaily(){collect();data.daily.it.items.push({name:'Nuova voce',desc:'',price:''});data.daily.en.items.push({name:'New item',desc:'',price:''});render()}function removeDaily(i){collect();data.daily.it.items.splice(i,1);data.daily.en.items.splice(i,1);render()}function addCat(){collect();data.categories.push({id:'cat'+Date.now(),it:'Nuova categoria',en:'New category',items:[]});render()}function addItem(ci){collect();data.categories[ci].items.push({it:'Nuova voce',en:'New item',desc_it:'',desc_en:'',price:''});render()}function removeItem(ci,ii){collect();data.categories[ci].items.splice(ii,1);render()}
