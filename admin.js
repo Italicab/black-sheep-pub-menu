@@ -73,4 +73,4 @@ async function loadMenuFromCloud(){
   }
 }
 
-loadMenuFromCloud();
+// loadMenuFromCloud();
