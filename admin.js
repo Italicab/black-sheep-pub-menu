@@ -17,7 +17,7 @@ if(btn){
   btn.className = data.settings.showDaily === false ? "top-btn off" : "top-btn gold";
 }}function setPath(o,p,v){let ps=p.split('.'),c=o;for(let i=0;i<ps.length-1;i++)c=c[ps[i]];if(v==="true")v=true;if(v==="false")v=false;c[ps.at(-1)]=v;if(p.includes('daily.it.items.')&&p.endsWith('.price')){let i=+p.split('.')[3];if(data.daily.en.items[i])data.daily.en.items[i].price=v}}function collect(){document.querySelectorAll('[data-path]').forEach(el=>setPath(data,el.dataset.path,el.value))}
 async function save(){
-
+alert("Tasto salva premuto");
   collect();
 
   const { error } = await supabaseClient
